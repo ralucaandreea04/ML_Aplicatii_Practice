@@ -68,10 +68,13 @@ mae_bayes = mean_absolute_error(y_test, y_pred_bayes)
 
 print(f"Bayesian - RMSE: {rmse_bayes:.2f}, MAE: {mae_bayes:.2f}")
 
-max_sold_december = test_data['Sold[MW]'].max()
-max_sold_date = test_data[test_data['Sold[MW]'] == max_sold_december]['Data'].iloc[0]
+total_sold_real = y_test.sum()
+total_sold_id3 = y_pred_id3.sum()
+total_sold_bayes = y_pred_bayes.sum()
 
-print(f"Cel mai mare sold pentru luna decembrie 2024 este {max_sold_december} MW, la data {max_sold_date.strftime('%d-%m-%Y %H:%M:%S')}")
+print(f"Soldul total real pe decembrie 2024: {total_sold_real:.2f} MW")
+print(f"Soldul total prezis de ID3 pe decembrie 2024: {total_sold_id3:.2f} MW")
+print(f"Soldul total prezis de modelul Bayesian pe decembrie 2024: {total_sold_bayes:.2f} MW")
 
 plt.figure(figsize=(10, 6))
 plt.plot(test_data['Data'], y_test, label='Valori reale', linestyle='-', color='blue')
