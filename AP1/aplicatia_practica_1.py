@@ -7,7 +7,7 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
-file_path = 'Grafic_SEN.xlsx'
+file_path = 'AP1/Grafic_SEN.xlsx'
 data = pd.read_excel(file_path)
 
 print(data.info())
@@ -25,7 +25,7 @@ data['Data'] = pd.to_datetime(data['Data'], format='%d-%m-%Y %H:%M:%S', errors='
 
 data = data.dropna()
 
-print("Distributia lunilor în setul de date:")
+print("Distributia lunilor in setul de date:")
 print(data['Data'].dt.month.value_counts())
 
 train_data = data[data['Data'].dt.month != 12]
@@ -75,12 +75,12 @@ print(f"Cel mai mare sold pentru luna decembrie 2024 este {max_sold_december} MW
 
 plt.figure(figsize=(10, 6))
 plt.plot(test_data['Data'], y_test, label='Valori reale', linestyle='-', color='blue')
-plt.plot(test_data['Data'], y_pred_id3, label='Predicții ID3', linestyle='-', color='green')
-plt.plot(test_data['Data'], y_pred_bayes, label='Predicții Bayesian', linestyle='-', color='orange')
+plt.plot(test_data['Data'], y_pred_id3, label='Predictii ID3', linestyle='-', color='green')
+plt.plot(test_data['Data'], y_pred_bayes, label='Predictii Bayesian', linestyle='-', color='orange')
 plt.xlabel('Data')
 plt.ylabel('Sold [MW]')
 plt.legend()
-plt.title('Comparație Predicții pentru luna Decembrie 2024')
+plt.title('Comparatie predictii pentru luna Decembrie 2024')
 plt.xticks(rotation=45)
 plt.tight_layout()  
 plt.show()
