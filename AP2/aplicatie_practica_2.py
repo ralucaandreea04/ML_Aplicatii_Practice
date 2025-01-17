@@ -11,6 +11,24 @@ data = pd.read_csv('tourism_dataset.csv')
 print(data.head())
 print(data.info())
 
+country_counts = data['Country'].value_counts()
+
+plt.figure(figsize=(10, 6))
+country_counts.plot(kind='pie', autopct='%1.1f%%', startangle=90, cmap='Set3', legend=False)
+plt.title('Distributia datelor pe tari')
+plt.ylabel('')
+plt.show()
+
+data_usa = data[data['Country'] == 'USA']
+
+category_counts = data_usa['Category'].value_counts()
+
+plt.figure(figsize=(10, 6))
+category_counts.plot(kind='pie', autopct='%1.1f%%', startangle=90, cmap='Set3', legend=False)
+plt.title('Distributia categoriilor pentru USA')
+plt.ylabel('')
+plt.show()
+
 selected_country = "USA" 
 data_country = data[data['Country'] == selected_country]
 
